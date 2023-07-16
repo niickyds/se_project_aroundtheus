@@ -4,3 +4,9 @@
   border-bottom: 1px solid;
   border-bottom-color: #545454;
 }
+
+@media screen and (max-width: 480px) {
+  .header {
+    margin-top: 0;
+  }
+}

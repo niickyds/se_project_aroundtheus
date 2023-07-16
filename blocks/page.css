@@ -16,3 +16,9 @@
   position: relative;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 480px) {
+  .page {
+    margin: 28px 19px 36px;
+  }
+}
