@@ -19,13 +19,13 @@
 
 @media screen and (max-width: 480px) {
   .page {
-    margin: 28px 19px 36px;
+    padding-top: 28px;
+    padding-bottom: 36px;
   }
 }
 
 @media screen and (max-width: 1100px) {
   .page__section {
     margin: 0 auto;
-    max-width: calc(100% - 40px);
   }
 }
