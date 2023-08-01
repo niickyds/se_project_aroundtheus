@@ -25,14 +25,34 @@ const initialCards = [
   },
 ];
 
+// Elements
+
 const editProfileBtn = document.querySelector(".profile__edit-button");
 const profileModal = document.querySelector(".modal");
 const modalCloseBtn = document.querySelector(".modal__close");
+const profileTitle = document.querySelector(".profile__title");
+const profileText = document.querySelector(".profile__text");
+const titleInput = document.querySelector("#profile-title-input");
+const textInput = document.querySelector("#profile-text-input");
+const profileFormEdit = profileModal.querySelector(".modal__form");
+
+function closePopup() {
+  profileModal.classList.remove("modal_opened");
+}
 
 editProfileBtn.addEventListener("click", function () {
+  titleInput.value = profileTitle.textContent;
+  textInput.value = profileText.textContent;
   profileModal.classList.add("modal_opened");
 });
 
 modalCloseBtn.addEventListener("click", function () {
-  profileModal.classList.remove("modal_opened");
+  closePopup();
+});
+
+profileFormEdit.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  profileTitle.textContent = titleInput.value;
+  profileText.textContent = textInput.value;
+  closePopup();
 });
