@@ -18,7 +18,9 @@
 .modal__container {
   background-color: #fff;
   color: #000;
-  padding: 36px;
+  padding: 36px 36px 48px 36px;
+  width: 358px;
+  height: 258px;
   border-radius: 10px;
   position: relative;
 }
@@ -67,6 +69,7 @@
   background-color: #000;
   color: #fff;
   padding: 14px 124px 18px 124px;
+  margin-top: 18px;
   border: solid;
   border-radius: 2px;
   font-size: 18px;
@@ -95,5 +98,17 @@
   .modal__container {
     padding: 25px 22px;
     max-width: 282px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .modal__container {
+    padding: 25px 22px 25px 22px;
+    width: 238px;
+    height: 272px;
+  }
+
+  .modal__button {
+    margin-top: 15px;
   }
 }
