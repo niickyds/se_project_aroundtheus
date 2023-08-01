@@ -71,6 +71,12 @@
   border-radius: 2px;
   font-size: 18px;
   line-height: 1.2;
+  transition: opacity 0.1s linear;
+}
+
+.modal__button:hover {
+  opacity: 80%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 700px) {
