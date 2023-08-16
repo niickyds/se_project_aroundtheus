@@ -128,12 +128,6 @@
     max-width: 282px;
   }
 
-  .modal__container {
-    padding: 25px 22px 25px 22px;
-    width: 238px;
-    height: 272px;
-  }
-
   .modal__button {
     margin-top: 15px;
   }
