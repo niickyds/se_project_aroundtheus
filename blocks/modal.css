@@ -8,11 +8,17 @@
   z-index: 99;
   align-items: center;
   justify-content: center;
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
   display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 .modal__container {
@@ -98,6 +104,10 @@
 .modal__preview-text {
   margin: 0;
   margin-top: 8px;
+}
+
+.modal__image-container {
+  position: relative;
 }
 
 @media screen and (max-width: 700px) {
