@@ -38,6 +38,7 @@
         <p class="footer__copyright">&#169; 2023 Around The U.S.</p>
       </footer>
     </div>
+
     <!-- Edit Modal -->
     <div class="modal" id="edit-modal">
       <div class="modal__container">
@@ -100,9 +101,23 @@
       </div>
     </div>
 
+    <!-- Image Modal -->
+    <div class="modal" id="image-modal">
+      <div class="modal__image-containter">
+        <button
+            type="button"
+            class="modal__close_preview modal__close"
+            id="preview-modal-close"
+          ></button>
+        <image src="#" class="preview-image">
+        <p class="modal__preview-text"></p>
+      </div>
+    </div>
+
     <template class="card-template">
       <li class="card">
-        <img src="" alt="" class="card__image" />
+        <button class="card__delete-button" type="button"></button>
+        <img src="#" class="card__image" />
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>
