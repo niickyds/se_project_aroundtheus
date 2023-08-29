@@ -98,6 +98,31 @@ function getCardElement(data) {
   return cardElement;
 }
 
+// Keypress function
+
+function modalEscClose(evt) {
+  if (evt.key === "Escape") {
+    const currentModal = document.querySelector(".modal_opened");
+    closePopup(currentModal);
+  }
+}
+document.addEventListener("keydown", modalEscClose);
+
+// Modal Click Out
+
+function modalClickClose(evt) {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closePopup(evt.currentTarget);
+  }
+}
+
+[profileModal, cardModal, previewImageModal].forEach((modal) => {
+  modal.addEventListener("click", modalClickClose);
+});
+
 // event handlers
 
 function handleProfileFormEdit(evt) {

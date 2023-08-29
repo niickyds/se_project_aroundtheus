@@ -49,22 +49,32 @@
         ></button>
         <h2 class="modal__heading">Edit Profile</h2>
         <form class="modal__form">
-          <input
-            type="text"
-            name="title"
-            class="modal__form-input"
-            id="profile-title-input"
-            placeholder="Name"
-            required
-          />
-          <input
-            type="text"
-            name="text"
-            class="modal__form-input"
-            id="profile-text-input"
-            placeholder="Description"
-            required
-          />
+          <label class="modal__label">
+            <input
+              type="text"
+              name="title"
+              class="modal__input"
+              id="profile-title-input"
+              placeholder="Name"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="modal__error" id="profile-title-input-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              type="text"
+              name="text"
+              class="modal__input"
+              id="profile-text-input"
+              placeholder="Description"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="modal__error" id="profile-text-input-error"></span>
+          </label>
           <button type="submit" class="modal__button">Save</button>
         </form>
       </div>
@@ -80,23 +90,35 @@
         ></button>
         <h2 class="modal__heading">New place</h2>
         <form class="modal__form">
-          <input
-            type="text"
-            name="title"
-            class="modal__form-input"
-            id="add-title-input"
-            placeholder="title"
-            required
-          />
-          <input
-            type="text"
-            name="text"
-            class="modal__form-input"
-            id="add-url-input"
-            placeholder="Image URL"
-            required
-          />
-          <button type="submit" class="modal__button">Save</button>
+          <label class="modal__label">
+            <input
+              type="text"
+              name="title"
+              class="modal__input"
+              id="add-title-input"
+              placeholder="title"
+              required
+            />
+            <span class="modal__error" id="add-title-input-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              type="text"
+              name="text"
+              class="modal__input"
+              id="add-url-input"
+              placeholder="Image URL"
+              required
+            />
+            <span class="modal__error" id="add-url-input-error"></span>
+          </label>
+          <button
+            type="submit"
+            class="modal__button modal__button_disabled"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -126,5 +148,6 @@
     </template>
 
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validation.js" defer></script>
   </body>
 </html>
