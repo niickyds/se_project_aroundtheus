@@ -113,6 +113,10 @@
   cursor: pointer;
 }
 
+.modal__button_disabled {
+  opacity: 20%;
+}
+
 .modal__close_preview {
   width: 30px;
   height: 30px;
