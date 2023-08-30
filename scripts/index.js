@@ -137,6 +137,7 @@ function handleCardFormEdit(evt) {
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardList);
   closePopup(cardModal);
+  addCardFormEdit.reset();
 }
 
 // profile events
