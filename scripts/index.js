@@ -102,10 +102,12 @@ function getCardElement(data) {
 
 function modalEscClose(evt) {
   if (evt.key === "Escape") {
-    const currentModal = document.querySelector(".modal_opened");
-    closePopup(currentModal);
+    closePopup(profileModal);
+    closePopup(cardModal);
+    closePopup(previewImageModal);
   }
 }
+
 document.addEventListener("keydown", modalEscClose);
 
 // Modal Click Out
