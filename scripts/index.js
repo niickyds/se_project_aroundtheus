@@ -105,10 +105,9 @@ function closeModalEsc(evt) {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal_opened");
     closePopup(openedModal);
+    openedModal.addEventListener("keydown", closeModalEsc);
   }
 }
-
-document.addEventListener("keydown", closeModalEsc);
 
 // Modal Click Out
 
