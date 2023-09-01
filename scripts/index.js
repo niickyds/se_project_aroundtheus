@@ -93,7 +93,7 @@ function getCardElement(data) {
   });
 
   cardImage.src = data.link;
-  cardTitle.alt = data.name;
+  cardImage.alt = data.name;
   cardTitle.textContent = data.name;
 
   return cardElement;
@@ -105,7 +105,6 @@ function closeModalEsc(evt) {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal_opened");
     closePopup(openedModal);
-    openedModal.addEventListener("keydown", closeModalEsc);
   }
 }
 
@@ -156,10 +155,3 @@ editProfileBtn.addEventListener("click", () => {
 
 addCardFormEdit.addEventListener("submit", handleCardFormEdit);
 addCardButton.addEventListener("click", () => openPopup(cardModal));
-addCardModalCloseBtn.addEventListener("click", () => closePopup(cardModal));
-
-// preview image events
-
-previewModalCloseBtn.addEventListener("click", () =>
-  closePopup(previewImageModal)
-);
