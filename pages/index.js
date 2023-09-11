@@ -1,3 +1,6 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -153,3 +156,22 @@ editProfileBtn.addEventListener("click", () => {
 
 addCardFormEdit.addEventListener("submit", handleCardFormEdit);
 addCardButton.addEventListener("click", () => openPopup(cardModal));
+
+// Validation //
+
+const validationConfig = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormElement = profileModal.querySelector(".modal__form");
+const addFormElement = cardModal.querySelector(".modal__form");
+
+const editFormVlaidator = new FormValidator(validationConfig, editFormElement);
+const addFormVlaidator = new FormValidator(validationConfig, addFormElement);
+
+editFormVlaidator;
+addFormVlaidator;
