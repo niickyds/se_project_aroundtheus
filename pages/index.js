@@ -1,6 +1,25 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
+// Validation //
+
+const config = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormElement = document.querySelector("#edit-form");
+const addFormElement = document.querySelector("#add-form");
+
+const editFormVlaidator = new FormValidator(config, editFormElement);
+const addFormVlaidator = new FormValidator(config, addFormElement);
+
+editFormVlaidator.enableValidation();
+addFormVlaidator.enableValidation();
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -59,8 +78,6 @@ const cardSelector = ".card-template";
 
 // Functions
 
-initialCards.forEach((cardData) => renderCard(cardData, cardList));
-
 function openPopup(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalEsc);
@@ -70,43 +87,41 @@ function closePopup(modal) {
   document.removeEventListener("keydown", closeModalEsc);
 }
 
-function renderCard(data, wrapper) {
-  const cardElement = getCardElement(data);
-  wrapper.prepend(cardElement);
+initialCards.forEach((cardData) => renderCard(cardData, cardList));
+
+function renderCard(data) {
+  const card = new Card(data, "#card-template");
+  cardList.prepend(card.getView());
 }
-// function renderCard(data, wrapper) {
-//   const card = new Card(data, cardSelector);
-//   wrapper.prepend(card.getView());
+
+// function getCardElement(data) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImage = cardElement.querySelector(".card__image");
+//   const cardTitle = cardElement.querySelector(".card__title");
+//   const likeButton = cardElement.querySelector(".card__like-button");
+//   const deleteButton = cardElement.querySelector(".card__delete-button");
+
+//   likeButton.addEventListener("click", () => {
+//     likeButton.classList.toggle("card__like-button_active");
+//   });
+
+//   deleteButton.addEventListener("click", () => {
+//     cardElement.remove();
+//   });
+
+//   cardImage.addEventListener("click", () => {
+//     previewImage.src = data.link;
+//     previewImage.alt = data.name;
+//     previewText.textContent = data.name;
+//     openPopup(previewImageModal);
+//   });
+
+//   cardImage.src = data.link;
+//   cardImage.alt = data.name;
+//   cardTitle.textContent = data.name;
+
+//   return cardElement;
 // }
-
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  cardImage.addEventListener("click", () => {
-    previewImage.src = data.link;
-    previewImage.alt = data.name;
-    previewText.textContent = data.name;
-    openPopup(previewImageModal);
-  });
-
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardTitle.textContent = data.name;
-
-  return cardElement;
-}
 
 // Keypress function
 
@@ -162,22 +177,3 @@ editProfileBtn.addEventListener("click", () => {
 
 addCardFormEdit.addEventListener("submit", handleCardFormEdit);
 addCardButton.addEventListener("click", () => openPopup(cardModal));
-
-// Validation //
-
-const validationConfig = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
-const editFormElement = profileModal.querySelector(".modal__form");
-const addFormElement = cardModal.querySelector(".modal__form");
-
-const editFormVlaidator = new FormValidator(validationConfig, editFormElement);
-const addFormVlaidator = new FormValidator(validationConfig, addFormElement);
-
-editFormVlaidator.enableValidation();
-addFormVlaidator.enableValidation();

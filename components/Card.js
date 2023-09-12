@@ -1,3 +1,19 @@
+function closeModalEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closePopup(openedModal);
+  }
+}
+
+function openPopup(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalEsc);
+}
+function closePopup(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalEsc);
+}
+
 class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
@@ -22,7 +38,12 @@ class Card {
     this._cardElement = null;
   }
 
-  _handleImageClick() {}
+  _handleImageClick() {
+    previewImage.src = data.link;
+    previewImage.alt = data.name;
+    previewText.textContent = data.name;
+    openPopup(previewImageModal);
+  }
 
   _getTemplate() {
     return document
@@ -38,6 +59,7 @@ class Card {
     this._cardImage = this._element.querySelector(".card__image");
     this._cardTitle = this._element.querySelector(".card__title");
     this._setEventListeners();
+    return this._elment;
   }
 }
 
