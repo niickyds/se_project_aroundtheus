@@ -1,19 +1,3 @@
-function closeModalEsc(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    closePopup(openedModal);
-  }
-}
-
-function openPopup(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeModalEsc);
-}
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeModalEsc);
-}
-
 class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
@@ -39,9 +23,12 @@ class Card {
   }
 
   _handleImageClick() {
-    previewImage.src = data.link;
-    previewImage.alt = data.name;
-    previewText.textContent = data.name;
+    const previewImageModal = document.querySelector("#image-modal");
+    const previewImage = previewImageModal.querySelector(".preview-image");
+    const previewText = previewImageModal.querySelector(".modal__preview-text");
+    previewImage.src = this._link;
+    previewImage.alt = this._name;
+    previewText.textContent = this._name;
     openPopup(previewImageModal);
   }
 
@@ -59,7 +46,7 @@ class Card {
     this._cardImage = this._element.querySelector(".card__image");
     this._cardTitle = this._element.querySelector(".card__title");
     this._setEventListeners();
-    return this._elment;
+    return this._element;
   }
 }
 
