@@ -55,6 +55,8 @@ const cardList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector(".card-template").content.firstElementChild;
 
+const cardSelector = ".card-template";
+
 // Functions
 
 initialCards.forEach((cardData) => renderCard(cardData, cardList));
@@ -68,10 +70,14 @@ function closePopup(modal) {
   document.removeEventListener("keydown", closeModalEsc);
 }
 
-function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
+function renderCard(data, wrapper) {
+  const cardElement = getCardElement(data);
   wrapper.prepend(cardElement);
 }
+// function renderCard(data, wrapper) {
+//   const card = new Card(data, cardSelector);
+//   wrapper.prepend(card.getView());
+// }
 
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
