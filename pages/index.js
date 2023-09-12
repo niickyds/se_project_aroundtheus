@@ -179,5 +179,5 @@ const addFormElement = cardModal.querySelector(".modal__form");
 const editFormVlaidator = new FormValidator(validationConfig, editFormElement);
 const addFormVlaidator = new FormValidator(validationConfig, addFormElement);
 
-editFormVlaidator;
-addFormVlaidator;
+editFormVlaidator.enableValidation();
+addFormVlaidator.enableValidation();
