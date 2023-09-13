@@ -11,9 +11,9 @@ class Card {
     this._deleteButton.addEventListener("click", () =>
       this._handleDeleteIcon()
     );
-    this._cardImage.addEventListener("click", () =>
-      this._handleImageClick(this)
-    );
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick(this);
+    });
   }
 
   _handleLikeIcon() {
@@ -23,16 +23,6 @@ class Card {
   _handleDeleteIcon() {
     this._deleteButton.parentNode.remove();
   }
-
-  // _handleImageClick() {
-  //   const previewImageModal = document.querySelector("#image-modal");
-  //   const previewImage = previewImageModal.querySelector(".preview-image");
-  //   const previewText = previewImageModal.querySelector(".modal__preview-text");
-  //   previewImage.src = this._link;
-  //   previewImage.alt = this._name;
-  //   previewText.textContent = this._name;
-  //   openPopup(previewImageModal);
-  // }
 
   _getTemplate() {
     const cardElement = document

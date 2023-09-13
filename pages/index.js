@@ -85,10 +85,20 @@ function closePopup(modal) {
   document.removeEventListener("keydown", closeModalEsc);
 }
 
+function handleImageClick() {
+  const previewImageModal = document.querySelector("#image-modal");
+  const previewImage = previewImageModal.querySelector(".preview-image");
+  const previewText = previewImageModal.querySelector(".modal__preview-text");
+  previewImage.src = this._link;
+  previewImage.alt = this._name;
+  previewText.textContent = this._name;
+  openPopup(previewImageModal);
+}
+
 initialCards.forEach((cardData) => renderCard(cardData));
 
 function renderCard(data) {
-  const card = new Card(data, "#card-template");
+  const card = new Card(data, "#card-template", handleImageClick);
   cardList.prepend(card.getView());
 }
 
