@@ -74,8 +74,6 @@ const cardList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector(".card-template").content.firstElementChild;
 
-const cardSelector = ".card-template";
-
 // Functions
 
 function openPopup(modal) {
@@ -87,7 +85,7 @@ function closePopup(modal) {
   document.removeEventListener("keydown", closeModalEsc);
 }
 
-initialCards.forEach((cardData) => renderCard(cardData, cardList));
+initialCards.forEach((cardData) => renderCard(cardData));
 
 function renderCard(data) {
   const card = new Card(data, "#card-template");
