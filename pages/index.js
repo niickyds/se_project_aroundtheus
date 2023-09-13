@@ -86,9 +86,6 @@ function closePopup(modal) {
 }
 
 function handleImageClick() {
-  const previewImageModal = document.querySelector("#image-modal");
-  const previewImage = previewImageModal.querySelector(".preview-image");
-  const previewText = previewImageModal.querySelector(".modal__preview-text");
   previewImage.src = this._link;
   previewImage.alt = this._name;
   previewText.textContent = this._name;
