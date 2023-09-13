@@ -1,5 +1,5 @@
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, _handleImageClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -18,8 +18,9 @@ class Card {
   }
 
   _handleDeleteIcon() {
-    this._cardElement.remove();
-    this._cardElement = null;
+    this._deleteButton.parentNode.remove();
+    // this._cardElement.remove();
+    // this._cardElement = null;
   }
 
   _handleImageClick() {
