@@ -115,6 +115,7 @@
 
 .modal__button_disabled {
   opacity: 20%;
+  cursor: default;
 }
 
 .modal__close_preview {
