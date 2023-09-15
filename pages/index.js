@@ -14,11 +14,11 @@ const config = {
 const editFormElement = document.querySelector("#edit-form");
 const addFormElement = document.querySelector("#add-form");
 
-const editFormVlaidator = new FormValidator(config, editFormElement);
-const addFormVlaidator = new FormValidator(config, addFormElement);
+const editFormValidator = new FormValidator(config, editFormElement);
+const addFormValidator = new FormValidator(config, addFormElement);
 
-editFormVlaidator.enableValidation();
-addFormVlaidator.enableValidation();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 const initialCards = [
   {
@@ -133,7 +133,7 @@ function handleCardFormEdit(evt) {
   renderCard({ name, link }, cardList);
   closePopup(cardModal);
   addCardFormEdit.reset();
-  toggleButtonState();
+  addFormValidator.toggleButtonState();
 }
 
 // profile events

@@ -113,6 +113,11 @@
   cursor: pointer;
 }
 
+.modal__button_disabled:hover {
+  opacity: 0.2;
+  cursor: default;
+}
+
 .modal__button_disabled {
   opacity: 20%;
   cursor: default;
