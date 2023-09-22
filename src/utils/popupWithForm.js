@@ -7,10 +7,14 @@ class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
+  _getInputValues() {}
+
   close() {
     this._popupForm.reset();
     super.close();
   }
+
+  setEventListeners() {}
 }
 
 // index
