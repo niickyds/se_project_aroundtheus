@@ -7,18 +7,25 @@ class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  _getInputValues() {}
+  _getInputValues() {
+    const inputElements = this._popupForm.querySelectorAll(".modal__input");
+    const inputValues = {};
+    inputElements.forEach((inputElements) => {
+      inputValues[inputElements.name] = inputElements.value;
+    });
+    return inputValues;
+  }
 
   close() {
     this._popupForm.reset();
     super.close();
   }
 
-  setEventListeners() {}
+  setEventListeners() {
+    this._popupForm.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
+    });
+    super.setEventListeners();
+  }
 }
-
-// index
-
-const newCardPopup = popupWithForm("card-modal", () => {
-  // handleFormSubmit
-});

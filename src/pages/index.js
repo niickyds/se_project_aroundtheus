@@ -1,25 +1,11 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import Popup from "../utils/popup.js";
+import PopupWithForm from "../utils/popupWithForm.js";
+import PopupWithimage from "../utils/popupWithImage.js";
+import Section from "../utils/section.js";
+import UserInfo from "../utils/userInfo.js";
 import "./index.css";
-
-// Validation //
-
-const config = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
-const editFormElement = document.querySelector("#edit-form");
-const addFormElement = document.querySelector("#add-form");
-
-const editFormValidator = new FormValidator(config, editFormElement);
-const addFormValidator = new FormValidator(config, addFormElement);
-
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
 
 const initialCards = [
   {
@@ -69,6 +55,36 @@ const previewImage = previewImageModal.querySelector(".preview-image");
 const previewText = previewImageModal.querySelector(".modal__preview-text");
 
 const cardList = document.querySelector(".cards__list");
+
+// Validation //
+
+const config = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormElement = document.querySelector("#edit-form");
+const addFormElement = document.querySelector("#add-form");
+
+const editFormValidator = new FormValidator(config, editFormElement);
+const addFormValidator = new FormValidator(config, addFormElement);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
+// popup form
+
+const newCardPopup = popupWithForm("card-modal", () => {
+  handleFormSubmit;
+});
+newCardPopup.setEventListeners();
+
+//  card stuffs
+
+// new popupForm = new PopupWithForm("#edit-modal", ())
 
 // Functions
 
