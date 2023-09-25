@@ -137,18 +137,18 @@ function renderCard(data) {
 
 // Modal Click Out
 
-function closeModalClick(evt) {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closePopup(evt.currentTarget);
-  }
-}
+// function closeModalClick(evt) {
+//   if (
+//     evt.target.classList.contains("modal") ||
+//     evt.target.classList.contains("modal__close")
+//   ) {
+//     closePopup(evt.currentTarget);
+//   }
+// }
 
-[profileModal, cardModal, previewImageModal].forEach((modal) => {
-  modal.addEventListener("click", closeModalClick);
-});
+// [profileModal, cardModal, previewImageModal].forEach((modal) => {
+//   modal.addEventListener("click", closeModalClick);
+// });
 
 // event handlers
 
