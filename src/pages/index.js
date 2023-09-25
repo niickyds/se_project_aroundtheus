@@ -55,7 +55,6 @@ const previewImage = previewImageModal.querySelector(".preview-image");
 const previewText = previewImageModal.querySelector(".modal__preview-text");
 
 const cardList = document.querySelector(".cards__list");
-const modals = document.querySelectorAll(".modal");
 
 // Validation //
 
