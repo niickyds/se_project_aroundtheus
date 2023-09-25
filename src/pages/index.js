@@ -103,17 +103,6 @@ const section = new Section({
   },
 });
 
-// Functions
-
-// function openPopup(modal) {
-//   modal.classList.add("modal_opened");
-//   document.addEventListener("keydown", closeModalEsc);
-// }
-// function closePopup(modal) {
-//   modal.classList.remove("modal_opened");
-//   document.removeEventListener("keydown", closeModalEsc);
-// }
-
 function handleImageClick() {
   imagePopup.open(data);
 }
@@ -131,17 +120,6 @@ function renderCard(data) {
 //   if (evt.key === "Escape") {
 //     const openedModal = document.querySelector(".modal_opened");
 //     closePopup(openedModal);
-//   }
-// }
-
-// Modal Click Out
-
-// function closeModalClick(evt) {
-//   if (
-//     evt.target.classList.contains("modal") ||
-//     evt.target.classList.contains("modal__close")
-//   ) {
-//     closePopup(evt.currentTarget);
 //   }
 // }
 
