@@ -115,7 +115,7 @@ const section = new Section({
 // }
 
 function handleImageClick() {
-  imagePopup.open();
+  imagePopup.open(data);
 }
 
 initialCards.forEach((cardData) => renderCard(cardData));
