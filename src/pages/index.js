@@ -55,6 +55,7 @@ const previewImage = previewImageModal.querySelector(".preview-image");
 const previewText = previewImageModal.querySelector(".modal__preview-text");
 
 const cardList = document.querySelector(".cards__list");
+const modals = document.querySelectorAll(".modal");
 
 // Validation //
 
@@ -115,7 +116,7 @@ const section = new Section({
 // }
 
 function handleImageClick() {
-  imagePopup.open(data);
+  imagePopup.open();
 }
 
 initialCards.forEach((cardData) => renderCard(cardData));
