@@ -144,7 +144,7 @@ function handleImageClick(data) {
 editProfileBtn.addEventListener("click", () => {
   const profileData = userInfo.getUserInfo();
   titleInput.value = profileData.name;
-  textInput.value = profileData.job;
+  textInput.value = profileData.about;
   profileEditPopup.open();
 });
 
