@@ -148,13 +148,12 @@ function handleCardFormEdit(evt) {
 // profile events
 
 // profileFormEdit.addEventListener("submit", handleProfileFormEdit);
-// editProfileBtn.addEventListener("click", () => {
-//   titleInput.value = profileTitle.textContent;
-//   textInput.value = profileText.textContent;
-//   openPopup(profileModal);
-// });
+editProfileBtn.addEventListener("click", () => {
+  userInfo.getUserInfo();
+  profileEditPopup.open();
+});
 
 // new card events
 
 // addCardFormEdit.addEventListener("submit", handleCardFormEdit);
-// addCardButton.addEventListener("click", () => openPopup(cardModal));
+addCardButton.addEventListener("click", () => newFormPopup.open());
