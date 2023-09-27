@@ -142,7 +142,9 @@ function handleImageClick(data) {
 
 // profileFormEdit.addEventListener("submit", handleProfileFormEdit);
 editProfileBtn.addEventListener("click", () => {
-  userInfo.getUserInfo();
+  const profileData = userInfo.getUserInfo();
+  titleInput.value = profileData.name;
+  textInput.value = profileData.job;
   profileEditPopup.open();
 });
 
