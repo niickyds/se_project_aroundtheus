@@ -151,4 +151,7 @@ editProfileBtn.addEventListener("click", () => {
 // new card events
 
 // addCardFormEdit.addEventListener("submit", handleCardFormEdit);
-addCardButton.addEventListener("click", () => newFormPopup.open());
+addCardButton.addEventListener("click", () => {
+  addFormValidator.toggleButtonState();
+  newFormPopup.open();
+});
