@@ -102,10 +102,6 @@ const section = new Section({
   },
 });
 
-function handleImageClick(data) {
-  imagePopup.open(data);
-}
-
 initialCards.forEach((cardData) => renderCard(cardData));
 
 function renderCard(data) {
@@ -113,13 +109,16 @@ function renderCard(data) {
   cardList.prepend(card.getView());
 }
 
-// form submit
 function handleFormSubmit() {
   const cardValue = renderCard(data);
   cardList.prepend(cardValue);
   addCardFormEdit.reset();
   newFormPopup.close();
   return cardValue;
+}
+
+function handleImageClick(data) {
+  imagePopup.open(data);
 }
 
 // event handlers
