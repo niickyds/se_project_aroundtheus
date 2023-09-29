@@ -105,12 +105,9 @@ const section = new Section(
 );
 section.renderItems();
 
-// initialCards.forEach((data) => renderCard(data));
-
 function renderCard(data) {
   const card = new Card(data, "#card-template", handleImageClick);
   return card.getView();
-  // cardList.prepend(card.getView());
 }
 
 function handleFormSubmit(data) {
