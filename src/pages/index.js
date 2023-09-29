@@ -102,7 +102,7 @@ const section = new Section({
   },
 });
 
-initialCards.forEach((cardData) => renderCard(cardData));
+initialCards.forEach((data) => renderCard(data));
 
 function renderCard(data) {
   const card = new Card(data, "#card-template", handleImageClick);
@@ -122,12 +122,7 @@ function handleImageClick(data) {
 }
 
 // event handlers
-// function handleProfileFormEdit(evt) {
-//   evt.preventDefault();
-//   profileTitle.textContent = titleInput.value;
-//   profileText.textContent = textInput.value;
-//   closePopup(profileModal);
-// }
+
 // function handleCardFormEdit(evt) {
 //   evt.preventDefault();
 //   const name = cardTitleInput.value;
@@ -139,8 +134,6 @@ function handleImageClick(data) {
 // }
 
 // profile events
-
-// profileFormEdit.addEventListener("submit", handleProfileFormEdit);
 editProfileBtn.addEventListener("click", () => {
   const profileData = userInfo.getUserInfo();
   titleInput.value = profileData.name;
@@ -149,8 +142,6 @@ editProfileBtn.addEventListener("click", () => {
 });
 
 // new card events
-
-// addCardFormEdit.addEventListener("submit", handleCardFormEdit);
 addCardButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newFormPopup.open();

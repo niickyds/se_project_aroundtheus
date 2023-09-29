@@ -12,6 +12,6 @@ export default class Section {
   }
 
   addItem(param) {
-    this._container.append(param);
+    this._container.prepend(param);
   }
 }
