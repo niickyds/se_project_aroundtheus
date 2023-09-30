@@ -33,8 +33,5 @@ export default class Popup {
     this._popupCloseBtn.addEventListener("click", () => {
       this.close();
     });
-    this._popupImage.addEventListener("click", () => {
-      this.open();
-    });
   }
 }

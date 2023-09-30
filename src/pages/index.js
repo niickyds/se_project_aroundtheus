@@ -105,6 +105,7 @@ const section = new Section(
 );
 section.renderItems();
 
+// functions
 function renderCard(data) {
   const card = new Card(data, "#card-template", handleImageClick);
   return card.getView();
@@ -122,7 +123,7 @@ function handleImageClick(data) {
   imagePopup.open(data);
 }
 
-// profile events
+// listeners
 editProfileBtn.addEventListener("click", () => {
   const profileData = userInfo.getUserInfo();
   titleInput.value = profileData.name;
@@ -130,7 +131,6 @@ editProfileBtn.addEventListener("click", () => {
   profileEditPopup.open();
 });
 
-// new card events
 addCardButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newFormPopup.open();
