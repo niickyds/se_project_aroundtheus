@@ -98,7 +98,6 @@ const section = new Section(
     renderer: (item) => {
       const cardEl = renderCard(item);
       section.addItem(cardEl);
-      // cardList.prepend(cardEl);
     },
   },
   ".cards__list"
@@ -113,7 +112,7 @@ function renderCard(data) {
 
 function handleFormSubmit(data) {
   const cardValue = renderCard(data);
-  // cardList.prepend(cardValue);
+  section.addItem(cardValue);
   newFormPopup.close();
   return cardValue;
 }
