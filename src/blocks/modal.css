@@ -155,12 +155,13 @@
   }
 
   .modal {
-    padding: 0 19px;
+    padding: 0 20px 0 1px;
   }
 
   .modal__container {
     padding: 25px 22px;
     max-width: 282px;
+    width: 80%;
   }
 
   .popup__button {
