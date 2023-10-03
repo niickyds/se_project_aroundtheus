@@ -1,38 +1,12 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import PopupWithForm from "../components/popupWithForm.js";
-import PopupWithimage from "../components/popupWithImage.js";
-import Section from "../components/section.js";
-import UserInfo from "../components/userInfo.js";
-import initialCards from "../utils/constants.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithimage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import { initialCards } from "../utils/constants.js";
+import { config } from "../utils/constants.js";
 import "./index.css";
-
-// const initialCards = [
-//   {
-//     name: "Yosemite Valley",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-//   },
-//   {
-//     name: "Lake Louise",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-//   },
-//   {
-//     name: "Bald Mountains",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-//   },
-//   {
-//     name: "Latemar",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-//   },
-//   {
-//     name: "Vanoise National Park",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-//   },
-//   {
-//     name: "Lago di Braies",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-//   },
-// ];
 
 // Elements
 
@@ -57,14 +31,6 @@ const previewText = previewImageModal.querySelector(".modal__preview-text");
 const cardList = document.querySelector(".cards__list");
 
 // Validation //
-
-const config = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 
 const editFormElement = document.querySelector("#edit-form");
 const addFormElement = document.querySelector("#add-form");
