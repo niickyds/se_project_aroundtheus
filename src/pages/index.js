@@ -4,8 +4,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithimage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import { initialCards } from "../utils/constants.js";
-import { config } from "../utils/constants.js";
+import { initialCards } from "../utils/Constants.js";
+import { config } from "../utils/Constants.js";
 import "./index.css";
 
 // Elements

@@ -164,8 +164,10 @@
     width: 80%;
   }
 
-  .popup__button {
+  .modal__button {
     margin-top: 15px;
+    display: flex;
+    justify-content: center;
   }
 
   .modal__close_preview {
