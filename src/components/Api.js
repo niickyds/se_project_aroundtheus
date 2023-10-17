@@ -66,16 +66,6 @@ export default class Api {
     }).then(this._handleResponse);
   }
 
-  updateProfilePic(data) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({
-        avatar: data.link,
-      }),
-    }).then(this._handleResponse);
-  }
-
   updateProfilePic() {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
