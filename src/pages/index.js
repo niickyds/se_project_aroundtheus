@@ -7,6 +7,7 @@ import UserInfo from "../components/UserInfo.js";
 import { initialCards } from "../utils/Constants.js";
 import { config } from "../utils/Constants.js";
 import "./index.css";
+import Api from "../components/Api.js";
 
 // Elements
 
@@ -69,6 +70,16 @@ const section = new Section(
   ".cards__list"
 );
 section.renderItems();
+
+// API
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "6e53887a-44e7-4719-8efe-74af2f636950",
+    "Content-Type": "application/json",
+  },
+});
 
 // functions
 function renderCard(data) {
