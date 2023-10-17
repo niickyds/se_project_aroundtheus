@@ -22,6 +22,13 @@
             alt="jacques Cousteau"
             class="profile__image"
           />
+          <div class=".profile__pic-overlay">
+            <img
+              class="profile__pic-edit"
+              src="<%=require('./images/editPencil.svg')%>"
+              alt="edit profile icon"
+            />
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button class="profile__edit-button" type="button"></button>
@@ -79,6 +86,38 @@
       </div>
     </div>
 
+    <div class="modal" id="avatar-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="modal__close-add"
+          type="button"
+        ></button>
+        <h2 class="modal__heading">Change profile picture</h2>
+
+        <form class="modal__form">
+          <input
+            class="modal__input"
+            id="image-link"
+            type="url"
+            name="link"
+            placeholder="Image link"
+            required
+          />
+          <div class="modal__text-underline" id="image-link-redline">
+            <span class="modal__error" id="image-link-error">test</span>
+          </div>
+          <button
+            disabled
+            class="modal__button modal__button_disabled"
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Add Card Modal -->
     <div class="modal" id="card-modal">
       <div class="modal__container">
@@ -120,6 +159,21 @@
           >
             Save
           </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="confirm-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="modal__close-add"
+          type="button"
+        ></button>
+        <h2 class="modal__heading">Are you sure?</h2>
+
+        <form class="modal__form">
+          <button class="modal__button" type="submit">Yes</button>
         </form>
       </div>
     </div>
