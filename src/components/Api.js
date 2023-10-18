@@ -73,6 +73,4 @@ export default class Api {
       body: JSON.stringify({ avatar: data.link }),
     }).then(this._handleResponse);
   }
-
-  // other methods for working with the API
 }
