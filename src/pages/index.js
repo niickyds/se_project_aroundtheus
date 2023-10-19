@@ -2,6 +2,7 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithimage from "../components/PopupWithImage.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import { initialCards } from "../utils/Constants.js";
@@ -35,6 +36,36 @@ const avatarModal = document.querySelector("#avatar-modal");
 const profilePicBtn = document.querySelector(".profile__pic-overlay");
 const profileImage = document.querySelector(".profile__image");
 
+// API
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "6e53887a-44e7-4719-8efe-74af2f636950",
+    "Content-Type": "application/json",
+  },
+});
+
+let section;
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([data, initialCards]) => {
+    userInfo.setUserInfo(data);
+    section = new Section(
+      {
+        items: initialCards,
+        renderer: (item) => {
+          const cardEl = renderCard(item);
+          section.addItem(cardEl);
+        },
+      },
+      ".cards__list"
+    );
+    section.renderItems();
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 // Validation //
 
 const editFormElement = document.querySelector("#edit-form");
@@ -49,7 +80,7 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
-// Form Popup
+// Card Form Popup
 
 const newFormPopup = new PopupWithForm("#card-modal", handleFormSubmit);
 newFormPopup.setEventListeners();
@@ -70,46 +101,56 @@ imagePopup.setEventListeners();
 
 // Avatar Popup
 
-const avatarPopup = new PopupWithForm("#avatar-modal", handleAvatarFormSubmit); // still need to code callback
+const avatarPopup = new PopupWithForm("#avatar-modal", handleAvatarFormSubmit);
 avatarPopup.setEventListeners();
 
-// API
+// Delete Card Popup
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "6e53887a-44e7-4719-8efe-74af2f636950",
-    "Content-Type": "application/json",
-  },
-});
-
-let section;
-Promise.all([api.getInitialCards(), api.getUserInfo()])
-  .then(([data, initialCards]) => {
-    console.log(data);
-    userInfo.setUserInfo(data);
-    profileImage.src = data.avatar;
-    section = new Section(
-      {
-        items: initialCards,
-        renderer: (item) => {
-          const cardEl = renderCard(item);
-          section.addItem(cardEl);
-        },
-      },
-      ".cards__list"
-    );
-    section.renderItems();
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+const deleteCardPopup = new PopupWithConfirmation("#confirm-modal");
+deleteCardPopup.setEventListeners();
 
 // functions
 
 function renderCard(data) {
-  const card = new Card(data, "#card-template", handleImageClick);
-  return card.getView();
+  const cardEl = new Card(
+    data,
+    "#card-template",
+    handleImageClick,
+    handleDeleteclick,
+    handleLikeClick
+  );
+  return cardEl.getView();
+
+  // const card = new Card(data, "#card-template", handleImageClick);
+  // return card.getView();
+}
+
+function handleLikeClick(cardId, isLiked, SetLikesStatus) {
+  if (isLiked) {
+    api
+      .unlikeCard(cardId)
+      .then((cardData) => {
+        setLikesStatus(cardData.isLiked);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  } else {
+    api
+      .likeCard(cardId)
+      .then((cardData) => {
+        setLikesStatus(cardData.isLiked);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+}
+
+function handleDeleteclick(item) {
+  api.deleteCard(item.getId()).then(() => {
+    item;
+  });
 }
 
 function handleFormSubmit(data) {
