@@ -43,6 +43,20 @@ class Card {
     this._element = null;
   }
 
+  updateLikeStatus(isLiked) {
+    this.isLiked = isLiked;
+    this._renderLikes();
+  }
+
+  _renderLikes() {
+    const likeButton = this._cardElement.querySelector(".card__like-button");
+    if (this.isLiked) {
+      likeButton.classList.add("card__like-button_active");
+    } else {
+      likeButton.classList.remove("card__like-button_active");
+    }
+  }
+
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)

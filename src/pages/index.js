@@ -80,36 +80,37 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
-// Card Form Popup
+// Card Form Popup //
 
-const newFormPopup = new PopupWithForm("#card-modal", handleFormSubmit);
-newFormPopup.setEventListeners();
+const newCardPopup = new PopupWithForm("#card-modal", handleCardFormSubmit);
+newCardPopup.setEventListeners();
 
-//  Profile Edit Popup
+//  Profile Edit Popup //
 
-const userInfo = new UserInfo(".profile__title", ".profile__text");
-const profileEditPopup = new PopupWithForm("#edit-modal", (data) => {
-  userInfo.setUserInfo(data);
-  profileEditPopup.close();
-});
+const userInfo = new UserInfo(
+  ".profile__title",
+  ".profile__text",
+  ".profile__image"
+);
+const profileEditPopup = new PopupWithForm("#edit-modal", handleProfileEdit);
 profileEditPopup.setEventListeners();
 
-// Image Popup
+// Image Popup //
 
 const imagePopup = new PopupWithimage("#image-modal");
 imagePopup.setEventListeners();
 
-// Avatar Popup
+// Avatar Popup //
 
 const avatarPopup = new PopupWithForm("#avatar-modal", handleAvatarFormSubmit);
 avatarPopup.setEventListeners();
 
-// Delete Card Popup
+// Delete Card Popup //
 
 const deleteCardPopup = new PopupWithConfirmation("#confirm-modal");
 deleteCardPopup.setEventListeners();
 
-// functions
+// functions //
 
 function renderCard(data) {
   const cardEl = new Card(
@@ -125,21 +126,25 @@ function renderCard(data) {
   // return card.getView();
 }
 
-function handleLikeClick(cardId, isLiked, SetLikesStatus) {
+function handleCardFormSubmit() {}
+
+function handleProfileEdit() {}
+
+function handleLikeClick(cardId, isLiked, updateLikeStatus) {
   if (isLiked) {
     api
-      .unlikeCard(cardId)
+      .removeLike(cardId)
       .then((cardData) => {
-        setLikesStatus(cardData.isLiked);
+        updateLikeStatus(cardData.isLiked);
       })
       .catch((err) => {
         console.error(err);
       });
   } else {
     api
-      .likeCard(cardId)
+      .addLike(cardId)
       .then((cardData) => {
-        setLikesStatus(cardData.isLiked);
+        updateLikeStatus(cardData.isLiked);
       })
       .catch((err) => {
         console.error(err);
@@ -156,7 +161,7 @@ function handleDeleteclick(item) {
 function handleFormSubmit(data) {
   const cardValue = renderCard(data);
   section.addItem(cardValue);
-  newFormPopup.close();
+  newCardPopup.close();
   return cardValue;
 }
 
@@ -166,7 +171,8 @@ function handleImageClick(data) {
 
 function handleAvatarFormSubmit() {}
 
-// listeners
+// Listeners //
+
 editProfileBtn.addEventListener("click", () => {
   const profileData = userInfo.getUserInfo();
   titleInput.value = profileData.name;
@@ -176,7 +182,7 @@ editProfileBtn.addEventListener("click", () => {
 
 addCardButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
-  newFormPopup.open();
+  newCardPopup.open();
 });
 
 profilePicBtn.addEventListener("click", () => {
