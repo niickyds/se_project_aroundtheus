@@ -47,7 +47,7 @@ const api = new Api({
 });
 
 let section;
-Promise.all([api.getInitialCards(), api.getUserInfo()])
+Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, initialCards]) => {
     userInfo.setUserInfo(data);
     section = new Section(
