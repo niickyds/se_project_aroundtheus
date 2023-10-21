@@ -126,9 +126,31 @@ function renderCard(data) {
   // return card.getView();
 }
 
-function handleCardFormSubmit() {}
+function handleCardFormSubmit(data) {
+  api
+    .addCard(data)
+    .then((data) => {
+      renderCard(data);
+    })
+    .then(() => {
+      newCardPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
-function handleProfileEdit() {}
+function handleProfileEdit(data) {
+  api
+    .editUserInfo(data)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+      profileEditPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 function handleLikeClick(cardId, isLiked, updateLikeStatus) {
   if (isLiked) {
@@ -158,18 +180,18 @@ function handleDeleteclick(item) {
   });
 }
 
-function handleFormSubmit(data) {
-  const cardValue = renderCard(data);
-  section.addItem(cardValue);
-  newCardPopup.close();
-  return cardValue;
-}
+function handleAvatarFormSubmit() {}
 
 function handleImageClick(data) {
   imagePopup.open(data);
 }
 
-function handleAvatarFormSubmit() {}
+// function handleFormSubmit(data) {
+//   const cardValue = renderCard(data);
+//   section.addItem(cardValue);
+//   newCardPopup.close();
+//   return cardValue;
+// }
 
 // Listeners //
 
@@ -179,12 +201,10 @@ editProfileBtn.addEventListener("click", () => {
   textInput.value = profileData.about;
   profileEditPopup.open();
 });
-
 addCardButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newCardPopup.open();
 });
-
 profilePicBtn.addEventListener("click", () => {
   avatarFormValidator.toggleButtonState();
 });
