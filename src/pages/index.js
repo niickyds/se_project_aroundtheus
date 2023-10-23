@@ -33,8 +33,9 @@ const previewText = previewImageModal.querySelector(".modal__preview-text");
 const cardList = document.querySelector(".cards__list");
 
 const avatarModal = document.querySelector("#avatar-modal");
-const profilePicBtn = document.querySelector(".profile__pic-overlay");
-const profileImage = document.querySelector(".profile__image");
+const profileAvatarButton = document.querySelector(
+  ".profile__pic-overlay_button"
+);
 
 // API
 
@@ -121,9 +122,6 @@ function renderCard(data) {
     handleLikeClick
   );
   return cardEl.getView();
-
-  // const card = new Card(data, "#card-template", handleImageClick);
-  // return card.getView();
 }
 
 function handleCardFormSubmit(data) {
@@ -136,7 +134,7 @@ function handleCardFormSubmit(data) {
       newCardPopup.close();
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 }
 
@@ -148,7 +146,7 @@ function handleProfileEdit(data) {
       profileEditPopup.close();
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 }
 
@@ -175,23 +173,34 @@ function handleLikeClick(cardId, isLiked, updateLikeStatus) {
 }
 
 function handleDeleteclick(item) {
-  api.deleteCard(item.getId()).then(() => {
-    item;
+  deleteCardPopup.setSubmitAction(() => {
+    api
+      .deleteCard(item.getId())
+      .then(() => {
+        item.removeCard();
+        deleteCardPopup.close();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   });
 }
 
-function handleAvatarFormSubmit() {}
-
-function handleImageClick(data) {
-  imagePopup.open(data);
+function handleAvatarFormSubmit() {
+  api
+    .updateProfilePic(data.link)
+    .then((userData) => {
+      userInfo.setAvatar(userData.avatar);
+      avatarPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
-// function handleFormSubmit(data) {
-//   const cardValue = renderCard(data);
-//   section.addItem(cardValue);
-//   newCardPopup.close();
-//   return cardValue;
-// }
+function handleImageClick(name, link) {
+  imagePopup.open(name, link);
+}
 
 // Listeners //
 
@@ -205,6 +214,7 @@ addCardButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newCardPopup.open();
 });
-profilePicBtn.addEventListener("click", () => {
+profileAvatarButton.addEventListener("click", () => {
+  console.log("profile clickced");
   avatarFormValidator.toggleButtonState();
 });
