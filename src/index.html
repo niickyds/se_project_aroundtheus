@@ -17,11 +17,7 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="jacques Cousteau"
-            class="profile__image"
-          />
+          <img src="" alt="Profile Image" class="profile__image" />
           <div class="profile__pic-overlay">
             <button class="profile__pic-overlay_button" type="button">
               <img
@@ -89,8 +85,8 @@
     </div>
 
     <!-- Avatar Modal -->
-    <div class="modal" id="avatar-modal">
-      <div class="modal__container">
+    <div class="modal avatar-modal" id="avatar-modal">
+      <div class="modal__container modal__container-avatar">
         <button
           class="modal__close"
           id="modal__close-add"
@@ -108,7 +104,7 @@
             required
           />
           <div class="modal__text-underline" id="image-link-redline">
-            <span class="modal__error" id="image-link-error">test</span>
+            <span class="modal__error" id="image-link-error"></span>
           </div>
           <button
             disabled
@@ -168,13 +164,13 @@
 
     <!-- Confirm Modal -->
     <div class="modal" id="confirm-modal">
-      <div class="modal__container">
+      <div class="modal__container modal__container-delete">
         <button
           class="modal__close"
           id="modal__close-add"
           type="button"
         ></button>
-        <h2 class="modal__heading">Are you sure?</h2>
+        <h2 class="modal__heading-avatar">Are you sure?</h2>
 
         <form class="modal__form">
           <button class="modal__button" type="submit">Yes</button>

@@ -51,6 +51,7 @@ let section;
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, initialCards]) => {
     userInfo.setUserInfo(data);
+    userInfo.setAvatar(data);
     section = new Section(
       {
         items: initialCards,
@@ -177,16 +178,17 @@ function handleDeleteclick(item) {
     api
       .deleteCard(item.getId())
       .then(() => {
-        item.removeCard();
+        item.deleteCard();
         deleteCardPopup.close();
       })
       .catch((err) => {
         console.error(err);
       });
   });
+  deleteCardPopup.open();
 }
 
-function handleAvatarFormSubmit() {
+function handleAvatarFormSubmit(data) {
   api
     .updateProfilePic(data.link)
     .then((userData) => {
@@ -215,6 +217,6 @@ addCardButton.addEventListener("click", () => {
   newCardPopup.open();
 });
 profileAvatarButton.addEventListener("click", () => {
-  console.log("profile clickced");
+  avatarPopup.open();
   avatarFormValidator.toggleButtonState();
 });
