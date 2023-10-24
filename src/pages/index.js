@@ -47,7 +47,6 @@ const api = new Api({
   },
 });
 
-let section;
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, initialCards]) => {
     userInfo.setUserInfo(data);
@@ -55,10 +54,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     section = new Section(
       {
         items: initialCards,
-        renderer: (item) => {
-          const cardEl = renderCard(item);
-          section.addItem(cardEl);
-        },
+        renderer: renderCard(item),
       },
       ".cards__list"
     );
@@ -67,6 +63,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .catch((err) => {
     console.error(err);
   });
+
+let section;
 
 // Validation //
 
@@ -122,7 +120,7 @@ function renderCard(data) {
     handleDeleteclick,
     handleLikeClick
   );
-  return cardEl.getView();
+  section.addItem(cardEl.getView());
 }
 
 function handleCardFormSubmit(data) {
@@ -174,6 +172,7 @@ function handleLikeClick(cardId, isLiked, updateLikeStatus) {
 }
 
 function handleDeleteclick(item) {
+  deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
     api
       .deleteCard(item.getId())
@@ -185,14 +184,13 @@ function handleDeleteclick(item) {
         console.error(err);
       });
   });
-  deleteCardPopup.open();
 }
 
 function handleAvatarFormSubmit(data) {
   api
     .updateProfilePic(data.link)
     .then((userData) => {
-      userInfo.setAvatar(userData.avatar);
+      userInfo.setAvatar(userData);
       avatarPopup.close();
     })
     .catch((err) => {
