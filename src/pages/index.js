@@ -84,7 +84,11 @@ avatarFormValidator.enableValidation();
 
 // Card Form Popup //
 
-const newCardPopup = new PopupWithForm("#card-modal", handleCardFormSubmit);
+const newCardPopup = new PopupWithForm(
+  "#card-modal",
+  handleCardFormSubmit,
+  "Create"
+);
 newCardPopup.setEventListeners();
 
 //  Profile Edit Popup //
@@ -94,7 +98,11 @@ const userInfo = new UserInfo(
   ".profile__text",
   ".profile__image"
 );
-const profileEditPopup = new PopupWithForm("#edit-modal", handleProfileEdit);
+const profileEditPopup = new PopupWithForm(
+  "#edit-modal",
+  handleProfileEdit,
+  "Save"
+);
 profileEditPopup.setEventListeners();
 
 // Image Popup //
@@ -104,12 +112,19 @@ imagePopup.setEventListeners();
 
 // Avatar Popup //
 
-const avatarPopup = new PopupWithForm("#avatar-modal", handleAvatarFormSubmit);
+const avatarPopup = new PopupWithForm(
+  "#avatar-modal",
+  handleAvatarFormSubmit,
+  "Save"
+);
 avatarPopup.setEventListeners();
 
 // Delete Card Popup //
 
-const deleteCardPopup = new PopupWithConfirmation("#confirm-modal");
+const deleteCardPopup = new PopupWithConfirmation(
+  "#confirm-modal",
+  "Deleting..."
+);
 deleteCardPopup.setEventListeners();
 
 // functions //
@@ -126,6 +141,7 @@ function renderCard(data) {
 }
 
 function handleCardFormSubmit(data) {
+  newCardPopup.setLoading(true);
   api
     .addCard(data)
     .then((data) => {
@@ -136,10 +152,14 @@ function handleCardFormSubmit(data) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      newCardPopup.setLoading(false, "Create");
     });
 }
 
 function handleProfileEdit(data) {
+  profileEditPopup.setLoading(true);
   api
     .editUserInfo(data)
     .then((data) => {
@@ -148,6 +168,9 @@ function handleProfileEdit(data) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      profileEditPopup.setLoading(false);
     });
 }
 
@@ -189,6 +212,7 @@ function handleDeleteclick(item) {
 }
 
 function handleAvatarFormSubmit(data) {
+  avatarPopup.setLoading(true);
   api
     .updateProfilePic(data.link)
     .then((userData) => {
@@ -197,6 +221,9 @@ function handleAvatarFormSubmit(data) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      avatarPopup.setLoading(false, "Saving...");
     });
 }
 
