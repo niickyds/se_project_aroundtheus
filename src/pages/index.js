@@ -54,7 +54,9 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     section = new Section(
       {
         items: initialCards,
-        renderer: renderCard(item),
+        renderer: (item) => {
+          const cardEl = renderCard(item);
+        },
       },
       ".cards__list"
     );
@@ -177,7 +179,7 @@ function handleDeleteclick(item) {
     api
       .deleteCard(item.getId())
       .then(() => {
-        item.deleteCard();
+        item.removeCard();
         deleteCardPopup.close();
       })
       .catch((err) => {
@@ -190,7 +192,7 @@ function handleAvatarFormSubmit(data) {
   api
     .updateProfilePic(data.link)
     .then((userData) => {
-      userInfo.setAvatar(userData);
+      userInfo.setAvatar(userData.avatar);
       avatarPopup.close();
     })
     .catch((err) => {

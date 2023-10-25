@@ -43,6 +43,11 @@ class Card {
     this._element = null;
   }
 
+  removeCard() {
+    this._element.remove();
+    this._lement = null;
+  }
+
   updateLikeStatus(isLiked) {
     this.isLiked = isLiked;
     this._renderLikes();
