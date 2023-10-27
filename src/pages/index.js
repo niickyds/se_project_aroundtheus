@@ -50,7 +50,7 @@ const api = new Api({
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, initialCards]) => {
     userInfo.setUserInfo(data);
-    userInfo.setAvatar(data);
+    userInfo.setAvatar(data.avatar);
     section = new Section(
       {
         items: initialCards,
