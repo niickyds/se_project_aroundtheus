@@ -98,6 +98,7 @@ const userInfo = new UserInfo(
   ".profile__text",
   ".profile__image"
 );
+
 const profileEditPopup = new PopupWithForm(
   "#edit-modal",
   handleProfileEdit,

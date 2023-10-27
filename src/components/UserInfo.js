@@ -19,6 +19,6 @@ export default class UserInfo {
   }
 
   setAvatar(data) {
-    this._avatarElement.src = data.avatar;
+    this._avatarElement.src = data;
   }
 }
