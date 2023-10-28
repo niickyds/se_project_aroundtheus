@@ -13,26 +13,9 @@ import Api from "../components/Api.js";
 // Elements
 
 const editProfileBtn = document.querySelector(".profile__edit-button");
-const profileModal = document.querySelector("#edit-modal");
-const profileTitle = document.querySelector(".profile__title");
-const profileText = document.querySelector(".profile__text");
 const titleInput = document.querySelector("#profile-title-input");
 const textInput = document.querySelector("#profile-text-input");
-const profileFormEdit = profileModal.querySelector(".modal__form");
-
 const addCardButton = document.querySelector(".profile__add-button");
-const cardModal = document.querySelector("#card-modal");
-const cardTitleInput = cardModal.querySelector("#add-title-input");
-const cardUrlInput = cardModal.querySelector("#add-url-input");
-const addCardFormEdit = cardModal.querySelector(".modal__form");
-
-const previewImageModal = document.querySelector("#image-modal");
-const previewImage = previewImageModal.querySelector(".preview-image");
-const previewText = previewImageModal.querySelector(".modal__preview-text");
-
-const cardList = document.querySelector(".cards__list");
-
-const avatarModal = document.querySelector("#avatar-modal");
 const profileAvatarButton = document.querySelector(
   ".profile__pic-overlay_button"
 );
@@ -175,21 +158,22 @@ function handleProfileEdit(data) {
     });
 }
 
-function handleLikeClick(cardId, isLiked, updateLikeStatus) {
-  if (isLiked) {
+function handleLikeClick(cardId) {
+  const likeStatus = !cardId.isLiked;
+  if (likeStatus) {
     api
-      .removeLike(cardId)
-      .then((cardData) => {
-        updateLikeStatus(cardData.isLiked);
+      .addLike(cardId)
+      .then((item) => {
+        this.updateLikeStatus(item.isLiked);
       })
       .catch((err) => {
         console.error(err);
       });
   } else {
     api
-      .addLike(cardId)
-      .then((cardData) => {
-        updateLikeStatus(cardData.isLiked);
+      .removeLike(cardId)
+      .then((item) => {
+        this.updateLikeStatus(item.isLiked);
       })
       .catch((err) => {
         console.error(err);
