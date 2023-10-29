@@ -159,8 +159,8 @@ function handleProfileEdit(data) {
 }
 
 function handleLikeClick(cardId) {
-  const likeStatus = !cardId.isLiked;
-  if (likeStatus) {
+  console.log(cardId);
+  if (!cardId._isLiked) {
     api
       .addLike(cardId)
       .then((item) => {
@@ -173,7 +173,7 @@ function handleLikeClick(cardId) {
     api
       .removeLike(cardId)
       .then((item) => {
-        this.updateLikeStatus(item.isLiked);
+        this.updateLikeStatus(!item.isLiked);
       })
       .catch((err) => {
         console.error(err);

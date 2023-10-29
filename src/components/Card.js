@@ -20,7 +20,7 @@ class Card {
     this._element
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
-        this._handleLikeClick(this._id);
+        this._handleLikeClick(this);
       });
     this._element
       .querySelector(".card__delete-button")
@@ -54,7 +54,7 @@ class Card {
   }
 
   _renderLikes() {
-    if (this.isLiked) {
+    if (this._isLiked) {
       this._likeButton.classList.add("card__like-button_active");
     } else {
       this._likeButton.classList.remove("card__like-button_active");
@@ -78,6 +78,7 @@ class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
+    this._renderLikes();
     this._setEventListeners();
     return this._element;
   }
