@@ -1,6 +1,6 @@
 class Card {
   constructor(
-    { name, link, _id, isLiked },
+    { name, link, id, isLiked },
     cardSelector,
     handleImageClick,
     handleDeleteClick,
@@ -8,8 +8,8 @@ class Card {
   ) {
     this._name = name;
     this._link = link;
-    this._id = _id;
-    this._isLiked = isLiked;
+    this.id = id;
+    this.isLiked = isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
@@ -54,7 +54,7 @@ class Card {
   }
 
   _renderLikes() {
-    if (this._isLiked) {
+    if (this.isLiked) {
       this._likeButton.classList.add("card__like-button_active");
     } else {
       this._likeButton.classList.remove("card__like-button_active");
@@ -84,7 +84,7 @@ class Card {
   }
 
   getId() {
-    return this._id;
+    return this.id;
   }
 }
 

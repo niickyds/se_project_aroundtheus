@@ -38,7 +38,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       {
         items: initialCards,
         renderer: (item) => {
-          const cardEl = renderCard(item);
+          renderCard(item);
         },
       },
       ".cards__list"
@@ -158,22 +158,21 @@ function handleProfileEdit(data) {
     });
 }
 
-function handleLikeClick(cardId) {
-  console.log(cardId);
-  if (!cardId._isLiked) {
+function handleLikeClick(card) {
+  if (!card.isLiked) {
     api
-      .addLike(cardId)
-      .then((item) => {
-        this.updateLikeStatus(item.isLiked);
+      .addLike(card.id)
+      .then(() => {
+        card.updateLikeStatus(true);
       })
       .catch((err) => {
         console.error(err);
       });
   } else {
     api
-      .removeLike(cardId)
-      .then((item) => {
-        this.updateLikeStatus(!item.isLiked);
+      .removeLike(card.id)
+      .then(() => {
+        card.updateLikeStatus(false);
       })
       .catch((err) => {
         console.error(err);
