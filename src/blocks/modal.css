@@ -145,6 +145,22 @@
   position: relative;
 }
 
+.modal__container-avatar {
+  padding: 34px 36px 36px 36px;
+  height: 235px;
+}
+
+.modal__container-delete {
+  padding: 34px 36px 36px 36px;
+  height: 135px;
+  width: 430px;
+}
+
+.modal__heading-avatar {
+  margin: 0;
+  padding-bottom: 20px;
+}
+
 @media screen and (max-width: 700px) {
   .modal__close {
     position: absolute;

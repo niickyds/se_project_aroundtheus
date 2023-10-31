@@ -1,28 +1,54 @@
 class Card {
-  constructor(data, cardSelector, _handleImageClick) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor(
+    { name, link, _id, isLiked },
+    cardSelector,
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick
+  ) {
+    this._name = name;
+    this._link = link;
+    this.id = _id;
+    this.isLiked = isLiked;
     this._cardSelector = cardSelector;
-    this._handleImageClick = _handleImageClick;
+    this._handleImageClick = handleImageClick;
+    this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _setEventListeners() {
-    this._likeButton.addEventListener("click", () => this._handleLikeIcon());
-    this._deleteButton.addEventListener("click", () =>
-      this._handleDeleteIcon()
-    );
-    this._cardImage.addEventListener("click", () => {
-      this._handleImageClick(this);
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeClick(this);
     });
-  }
-
-  _handleLikeIcon() {
-    this._likeButton.classList.toggle("card__like-button_active");
+    this._deleteButton.addEventListener("click", () => {
+      this._handleDeleteClick(this);
+    });
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick(this._name, this._link);
+    });
   }
 
   _handleDeleteIcon() {
     this._element.remove();
     this._element = null;
+  }
+
+  removeCard() {
+    this._element.remove();
+    this._lement = null;
+  }
+
+  updateLikeStatus(isLiked) {
+    this.isLiked = isLiked;
+    this._renderLikes();
+  }
+
+  _renderLikes() {
+    if (this.isLiked) {
+      this._likeButton.classList.add("card__like-button_active");
+    } else {
+      this._likeButton.classList.remove("card__like-button_active");
+    }
   }
 
   _getTemplate() {
@@ -42,8 +68,13 @@ class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
+    this._renderLikes();
     this._setEventListeners();
     return this._element;
+  }
+
+  getId() {
+    return this.id;
   }
 }
 
